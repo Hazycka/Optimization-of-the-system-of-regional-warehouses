@@ -1,0 +1,125 @@
+﻿@inherits LayoutComponentBase
+@inject IRepository _repository
+@inject IJSRuntime _JSRuntime
+
+<PageTitle>VKR_WEB</PageTitle>
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <article class="content px-4 row">
+            <div class="col-4">
+                @Body
+            </div>
+            <div class="col-1" style="display: flex; justify-content: center; align-items:center;">
+                <button type="button" class="btn btn-success" style="height: 75px; position:fixed; top: 50%; margin: 0;" @onclick="() => Optimize()">
+                    Оптимизировать
+                </button>
+            </div>
+            <div class="col" style="">
+                <div class="formBlock">
+                    <button type="button" class="btn" style="height: 75px; margin: 0;" @onclick="() => RefreshMap()">
+                        Обновить карту
+                    </button>
+                </div>
+                <div id="map" class="map" style="height:100vh;"></div>
+            </div>
+        </article>
+        <Modal @bind-Open="ModalLg" Size="ModalSize.ExtraLarge">
+            <ModalTitle>Оптимальное расположение РЦ</ModalTitle>
+            <ModalBody>
+                <div class="row">
+                    <div class="col">
+                        @if (resultWarehouses == null)
+                        {
+                            <img src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif" style="justify-content: center;" />
+                        }
+                        else
+                        {
+                            foreach (var warehouse in resultWarehouses)
+                            {
+                                <ShortWarehouseElement Warehouse="warehouse" />
+                            }
+                        }
+                    </div>
+                    <div class="col" style="justify-content: center;">
+                        <div id="routeMap" class="map" style="height:650px; width:650px;"></div>
+                    </div>
+                </div>
+            </ModalBody>
+            <ModalFooter>
+                <Button Variant="Primary" OnClick="() => CloseModal()">Ok</Button>
+            </ModalFooter>
+        </Modal>
+    </main>
+</div>
+
+@code {
+    private bool m_modalLg = false;
+
+    private List<Warehouse> resultWarehouses;
+
+    public bool ModalLg
+    {
+        get { return m_modalLg; }
+        set { m_modalLg = value; }
+    }
+
+    public async void Optimize()
+    {
+        ModalLg = true;
+
+        SimulatedAnnealing simulatedAnnealing = new(_repository.GetWarehouses(), _repository.GetDeliveryPoints(), _repository.GetSettings());
+        await simulatedAnnealing.SetPointsWarehouses();
+        resultWarehouses = simulatedAnnealing.GetOptimalWarehouses().Where(m => m.IsActive).ToList();
+
+        StateHasChanged();
+
+        await Task.Delay(1);
+
+        await RenderRouteMap(resultWarehouses);
+    }
+
+    public async Task RenderRouteMap(List<Warehouse> resultWarehouses)
+    {
+        await _JSRuntime.InvokeVoidAsync("SetRouteMap");
+
+        foreach (var warehouse in resultWarehouses)
+        {
+            await _JSRuntime.InvokeVoidAsync("SetWarehouse", warehouse.Name, warehouse.Coordinates.Latitude, warehouse.Coordinates.Longitude, warehouse.Cost);
+
+            foreach (var point_distance in warehouse.DeliveryPoints_Distances)
+            {
+                await _JSRuntime.InvokeVoidAsync("SetRoutedDeliveryPoint", point_distance.Key.Name, point_distance.Key.Coordinates.Latitude, point_distance.Key.Coordinates.Longitude, point_distance.Value, point_distance.Key.Frequency);
+
+                await Task.Delay(500);
+
+                await _JSRuntime.InvokeVoidAsync("SetRoute", warehouse.Coordinates.Latitude, warehouse.Coordinates.Longitude, point_distance.Key.Coordinates.Latitude, point_distance.Key.Coordinates.Longitude);
+            }
+        }
+    }
+
+    public async void RefreshMap()
+    {
+        await _JSRuntime.InvokeVoidAsync("RefreshMap");
+
+        foreach (var warehouse in _repository.GetWarehouses())
+        {
+            await _JSRuntime.InvokeVoidAsync("SetWarehouse", warehouse.Name, warehouse.Coordinates.Latitude, warehouse.Coordinates.Longitude, warehouse.Cost);
+        }
+        foreach (var point in _repository.GetDeliveryPoints())
+        {
+            await _JSRuntime.InvokeVoidAsync("SetDeliveryPoint", point.Name, point.Coordinates.Latitude, point.Coordinates.Longitude, point.Frequency);
+        }
+    }
+
+    public async void CloseModal()
+    {
+        ModalLg = false;
+
+        await _JSRuntime.InvokeVoidAsync("RefreshMap");
+    }
+}

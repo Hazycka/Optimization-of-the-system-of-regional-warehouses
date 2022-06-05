@@ -1,0 +1,80 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = VKR_WEB
+build_property.RootNamespace = VKR_WEB
+build_property.ProjectDir = D:\Temp\C# learning\VKR_WEB\VKR_WEB\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Temp\C# learning\VKR_WEB\VKR_WEB
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Temp/C\# learning/VKR_WEB/VKR_WEB/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Temp/C\# learning/VKR_WEB/VKR_WEB/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Temp/C\# learning/VKR_WEB/VKR_WEB/Pages/Points.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9pbnRzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Temp/C\# learning/VKR_WEB/VKR_WEB/Pages/Settings.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2V0dGluZ3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Temp/C\# learning/VKR_WEB/VKR_WEB/Pages/Warehouses.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2FyZWhvdXNlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Temp/C\# learning/VKR_WEB/VKR_WEB/Shared/AddElement.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEFkZEVsZW1lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Temp/C\# learning/VKR_WEB/VKR_WEB/Shared/Elements/DeliveryPointElement.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEVsZW1lbnRzXERlbGl2ZXJ5UG9pbnRFbGVtZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Temp/C\# learning/VKR_WEB/VKR_WEB/Shared/Elements/SettingsElement.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEVsZW1lbnRzXFNldHRpbmdzRWxlbWVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Temp/C\# learning/VKR_WEB/VKR_WEB/Shared/Elements/ShortWarehouseElement.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEVsZW1lbnRzXFNob3J0V2FyZWhvdXNlRWxlbWVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Temp/C\# learning/VKR_WEB/VKR_WEB/Shared/Elements/WarehouseElement.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEVsZW1lbnRzXFdhcmVob3VzZUVsZW1lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Temp/C\# learning/VKR_WEB/VKR_WEB/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Temp/C\# learning/VKR_WEB/VKR_WEB/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-d7udh6df1z
+
+[D:/Temp/C\# learning/VKR_WEB/VKR_WEB/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-3g17sjk9zx
+
+[D:/Temp/C\# learning/VKR_WEB/VKR_WEB/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Temp/C\# learning/VKR_WEB/VKR_WEB/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Temp/C\# learning/VKR_WEB/VKR_WEB/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

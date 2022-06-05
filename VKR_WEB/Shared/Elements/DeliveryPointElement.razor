@@ -1,0 +1,49 @@
+﻿@if (DeliveryPoint != null)
+{
+    <hr class="hrfix mt-4" />
+    <div class="row">
+        <div class="col-9">
+            <div class="row">
+                <div class="col mt-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text alert-primary">Название</span>
+                    </div>
+                    <input type="text" class="form-control" @bind="DeliveryPoint.Name">
+                </div>
+                <div class="col mt-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Широта</span>
+                    </div>
+                    <input type="number" class="form-control" @bind="DeliveryPoint.Coordinates.Latitude">
+                </div>
+                <div class="col mt-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Долгота</span>
+                    </div>
+                    <input type="number" class="form-control" @bind="DeliveryPoint.Coordinates.Longitude">
+                </div>
+                <div class="col my-2 maximum-width">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Частота</span>
+                    </div>
+                    <input type="number" class="form-control" @bind="DeliveryPoint.Frequency">
+                </div>
+            </div>
+        </div>
+        <div class="col-3" style="align-items: center;">
+            <div class="row">
+                <div class="col input-group mt-2" style="align-items: center;">
+                    <button type="button" class="btn btn-danger" style="height: 75px;" @onclick="(()=>OnDeleteDeliveryPoint.InvokeAsync(DeliveryPoint))">
+                        <i class="fa-solid fa-trash-can" style="margin-right: 6px;"></i>Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public DeliveryPoint? DeliveryPoint { get; set; }
+    [Parameter] public EventCallback<DeliveryPoint> OnDeleteDeliveryPoint { get; set; }
+
+}

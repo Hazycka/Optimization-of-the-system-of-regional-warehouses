@@ -1,0 +1,34 @@
+﻿@if (Warehouse != null)
+{
+    <div class="row">
+        <div class="col mt-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text alert-danger">Название</span>
+            </div>
+            <input type="text" class="form-control" @bind="Warehouse.Name">
+        </div>
+        <div class="col mt-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Широта</span>
+            </div>
+            <input type="number" class="form-control" @bind="Warehouse.Coordinates.Latitude">
+        </div>
+        <div class="col mt-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Долгота</span>
+            </div>
+            <input type="number" class="form-control" @bind="Warehouse.Coordinates.Longitude">
+        </div>
+        <div class="col mt-2 maximum-width">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Стоимость</span>
+            </div>
+            <input type="number" class="form-control" @bind="Warehouse.Cost">
+        </div>
+    </div>
+    <hr class="hrfix mt-4" />
+}
+
+@code {
+    [Parameter] public Warehouse? Warehouse { get; set; }
+}

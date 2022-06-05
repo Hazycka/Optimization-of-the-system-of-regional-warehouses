@@ -1,0 +1,31 @@
+﻿@page "/points"
+@inject IRepository repository
+
+<PageTitle>Simulated Annealing</PageTitle>
+
+<h3>Точки доставки</h3>
+
+@foreach (var point in deliveryPoints)
+{
+    <DeliveryPointElement DeliveryPoint="point" OnDeleteDeliveryPoint="DeleteDeliveryPoint" />
+}
+<AddElement OnAddElement="AddDefaultDelivaryPoint" />
+
+@code {
+    List<DeliveryPoint> deliveryPoints;
+
+    protected override void OnInitialized()
+    {
+        deliveryPoints = repository.GetDeliveryPoints();
+    }
+
+    void DeleteDeliveryPoint(DeliveryPoint deliveryPoint)
+    {
+        repository.DeleteDeliveryPoint(deliveryPoint);
+    }
+
+    void AddDefaultDelivaryPoint()
+    {
+        repository.AddDeliveryPoint(new DeliveryPoint() { Name = "No name", Coordinates = new Coordinates(0, 0), Frequency = 0 });
+    }
+}

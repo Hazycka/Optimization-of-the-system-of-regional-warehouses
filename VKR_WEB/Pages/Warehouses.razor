@@ -1,0 +1,31 @@
+﻿@page "/warehouses"
+@inject IRepository repository
+
+<PageTitle>Simulated Annealing</PageTitle>
+
+<h3 style="margin-bottom: 0;">Точки расположения РЦ</h3>
+
+@foreach (var warehouse in warehouses)
+{
+    <WarehouseElement Warehouse="warehouse" OnDeleteWarehouse="DeleteWarehouse" />
+}
+<AddElement OnAddElement="AddDefaultWarehouse" />
+
+@code {
+    List<Warehouse> warehouses;
+
+    protected override void OnInitialized()
+    {
+        warehouses = repository.GetWarehouses();
+    }
+
+    void DeleteWarehouse(Warehouse warehouse)
+    {
+        repository.DeleteWarehouse(warehouse);
+    }
+
+    void AddDefaultWarehouse()
+    {
+        repository.AddWarehouse(new Warehouse() { Name = "No name", Coordinates = new Coordinates(0, 0), Cost = 0, IsActive = false, DeliveryPoints_Distances = new() });
+    }
+}

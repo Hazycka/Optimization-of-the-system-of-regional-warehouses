@@ -1,0 +1,28 @@
+﻿@if (Settings != null)
+{
+    <hr class="hrfix" />
+    <div class="row">
+        <div class="col my-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Максимальная температура</span>
+            </div>
+            <input type="text" class="form-control" @bind="Settings.MaxTemperature">
+        </div>
+        <div class="col my-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Минимальная температура</span>
+            </div>
+            <input type="number" class="form-control" @bind="Settings.MinTemperature">
+        </div>
+        <div class="col my-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Стоимость километра пути</span>
+            </div>
+            <input type="number" class="form-control" @bind="Settings.CostPerKm">
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public Settings? Settings { get; set; }
+}

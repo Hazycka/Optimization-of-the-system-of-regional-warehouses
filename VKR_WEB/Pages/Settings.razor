@@ -1,0 +1,17 @@
+﻿@page "/settings"
+@inject IRepository repository
+
+<PageTitle>Simulated Annealing</PageTitle>
+
+<h3>Исходные данные</h3>
+
+<SettingsElement Settings="settings" />
+
+@code {
+    Models.Settings settings;
+
+    protected override void OnInitialized()
+    {
+        settings = repository.GetSettings();
+    }
+}

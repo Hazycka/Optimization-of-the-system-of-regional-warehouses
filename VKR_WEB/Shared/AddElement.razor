@@ -1,0 +1,12 @@
+﻿<hr class="hrfix mt-4" />
+<div class="row mt-3 mb-4" >
+    <div class="col">
+        <button type="button" class="btn btn-outline-info w-100" style="height: 70px; max-width: none" @onclick="(()=>OnAddElement.InvokeAsync())">
+            <i class="fa-solid fa-plus h1" style="margin-bottom: 0;"></i>
+        </button>
+    </div>
+</div>
+
+@code {
+    [Parameter] public EventCallback OnAddElement { get; set; }
+}

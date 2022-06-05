@@ -1,0 +1,48 @@
+﻿@if (Warehouse != null)
+{
+    <hr class="hrfix mt-4" />
+    <div class="row">
+        <div class="col-9">
+            <div class="row">
+                <div class="col mt-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text alert-danger">Название</span>
+                    </div>
+                    <input type="text" class="form-control" @bind="Warehouse.Name">
+                </div>
+                <div class="col mt-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Широта</span>
+                    </div>
+                    <input type="number" class="form-control" @bind="Warehouse.Coordinates.Latitude">
+                </div>
+                <div class="col mt-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Долгота</span>
+                    </div>
+                    <input type="number" class="form-control" @bind="Warehouse.Coordinates.Longitude">
+                </div>
+                <div class="col mt-2 maximum-width">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Стоимость</span>
+                    </div>
+                    <input type="number" class="form-control" @bind="Warehouse.Cost">
+                </div>
+            </div>
+        </div>
+        <div class="col-3" style="align-items: center;">
+            <div class="row">
+                <div class="col input-group mt-2" style="align-items: center;">
+                    <button type="button" class="btn btn-danger" style="height: 75px;" @onclick="(()=>OnDeleteWarehouse.InvokeAsync(Warehouse))">
+                        <i class="fa-solid fa-trash-can" style="margin-right: 6px;"></i>Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public Warehouse? Warehouse { get; set; }
+    [Parameter] public EventCallback<Warehouse> OnDeleteWarehouse { get; set; }
+}
