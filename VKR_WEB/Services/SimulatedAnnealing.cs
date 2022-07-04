@@ -135,11 +135,14 @@ namespace VKR_WEB.Services
                 {
                     if (!point.Warehouses_Distances.ContainsKey(warehouse))
                     {
+                        System.Diagnostics.Debug.WriteLine("Начали расчет" + point.Name + " - " + warehouse.Name); 
                         string url = $"http://router.project-osrm.org/route/v1/car/{point.Coordinates.Longitude.ToString(CultureInfo.InvariantCulture)}," +
                             $"{point.Coordinates.Latitude.ToString(CultureInfo.InvariantCulture)};" +
                             $"{warehouse.Coordinates.Longitude.ToString(CultureInfo.InvariantCulture)}," +
                             $"{warehouse.Coordinates.Latitude.ToString(CultureInfo.InvariantCulture)}";
                         var responceJson = await client.GetStringAsync(url);
+
+                        System.Diagnostics.Debug.WriteLine(point.Name + " - "+ warehouse.Name);
                         var routeService = JsonSerializer.Deserialize<RouteService>(responceJson);
                         point.Warehouses_Distances.Add(warehouse, routeService.Routes[0].Distance);
                     }
